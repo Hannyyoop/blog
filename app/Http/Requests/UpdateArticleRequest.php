@@ -24,7 +24,7 @@ class UpdateArticleRequest extends FormRequest
         return [
              'title' => 'required|min:10|max:255',
             'description' => 'required|min:100',
-            'category_id' => 'required'
+            'category_id' => 'required|exists:categories,id'
         ];
     }
 }

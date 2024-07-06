@@ -45,6 +45,7 @@ class ArticleController extends Controller
         return $request;
         $article = new Article();
         $article->title = $request->title;
+        $article->category_id = $request->category;
         $article->description = $request->description;
         $article->creator_name = auth()->user()->name; // Example for creator_name, adjust as needed
         $article->user_id = auth()->user()->id; // Assign the authenticated user's id
@@ -78,6 +79,7 @@ class ArticleController extends Controller
     {
         $article->update([
             'title' => $request->title,
+            'category_id' => $request->category,
             'description' => $request->description,
         ]);
         return redirect()->route('article.index')->with('msg', 'Article updated successfully');

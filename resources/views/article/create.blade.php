@@ -20,11 +20,15 @@
 
                     <div class="mb-3">
                         <label for="" class="form-label">Category</label>
-                        <select class=" form-select @error('category') is-invalid @enderror" name="category"
-                            value="{{ old('category') }}">
+                        <select class=" form-select @error('category') is-invalid @enderror" name="category">
+
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                <option value="{{ $category->id }}"
+                                    {{ old('category') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->title }}
+                                </option>
                             @endforeach
+
                         </select>
                         @error('category')
                             <div class=" invalid-feedback">{{ $message }}</div>
